@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mymailapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if member_signed_in? %>
+
+    <p>Hello, <%= current_member.name %> - <%= link_to "Sign_out", destroy_member_session_path, :method => 'delete' %></p>
+    
+    <% else %>
+    
+    <%= link_to "Sign In", new_member_session_path %>
+    <%= link_to "Register", new_member_registration_path %>
+    
+    <% end %>
+    
+    <%= yield %>
+  </body>
+</html>
